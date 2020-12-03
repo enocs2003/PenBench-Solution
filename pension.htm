@@ -1,0 +1,273 @@
+﻿<!doctype html>
+<html ng-app="pension">
+<head>
+    <meta charset="UTF-8">
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  minimum-scale=1.0, height=device-height">
+    <link rel="icon" type="image/png" href="Images/favicon.ico" />
+    <title>PenBench&reg; - Customized Pensions Solutions</title>
+    <link href="Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="Content/ui-grid.css" rel="stylesheet" type="text/css" />
+    <link href="Content/ui-grid.min.css" rel="stylesheet" type="text/css" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="Stylesheet" type="text/css" />-->
+
+    <link href="Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="Content/style.css" rel="stylesheet" type="text/css" />
+    <link href="Content/spinner.css" rel="stylesheet" type="text/css" />
+    <link href="Content/angular-material.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="assets/css/leaflet.css" rel="stylesheet" type="text/css" />
+    <!--<link href="assets/css/svgMap.min.css" rel="stylesheet" type="text/css" />-->
+    
+    <script src="Scripts/angular.min.js" type="text/javascript"></script>
+    <script src="Scripts/angular-route.min.js" type="text/javascript"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap.min.js" type="text/javascript"></script>
+    <script src="Scripts/angular-touch.min.js" type="text/javascript"></script>
+    <script src="Scripts/angular-animate.min.js" type="text/javascript"></script>
+    <script src="Scripts/angular-aria.min.js" type="text/javascript"></script>
+    <script src="Scripts/angular-material.min.js" type="text/javascript"></script>
+    <script src="Scripts/ui-grid.min.js" type="text/javascript"></script>
+    <script src="Scripts/angular-sanitize.min.js" type="text/javascript"></script>
+    
+    <script src="Scripts/Chart.min.js" type="text/javascript"> </script>
+    <script src="Scripts/angular-chart.min.js" type="text/javascript"> </script>
+    <script src="Scripts/angular-highcharts.js" type="text/javascript"> </script>
+
+    
+    
+    <script src="Scripts/leaflet-0.7.3.min.js" type="text/javascript"></script>
+    <script src="Scripts/angular-leaflet-directive.js" type="text/javascript"></script>
+    
+</head>
+<body style="background-color:#f2ffff;">
+    <!--<div class="container-fluid" style="position:sticky; margin-top:0px; top:0; width:100% !important;">-->
+
+    <div class="container-fluid" style="background-color:#5EC158;" ng-controller="InitController">
+
+        <div class="container">
+            <div class="btn-group">
+                <a data-placement="bottom" data-original-title="Mails" class="btn btn-default btn-sm" id="alerts" data-toggle="modal" data-target="#myModal2">
+                    <i class="fa fa-envelope"> <span style="background-color:yellow; color:red; padding:4px; border-radius:2px; font-weight:bold;"> {{alerts}}</span></i>
+                </a>
+            </div>
+            <div class="btn-group">
+                <a data-placement="bottom" data-original-title="Notifications" class="btn btn-default btn-sm" id="notifications" data-toggle="modal" data-target="#myModal1">
+                    <i class="fa fa-bullhorn"> <span style="background-color:yellow; color:red; padding:4px; border-radius:2px; font-weight:bold;"> {{notices}}</span></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container-fluid" style="background-image:url('Images/njcbuilding.jpg') !important; background-position:center; background-size: cover;">
+        <div class="container-fluid" style="padding-left:50px !important; padding-right:50px !important">
+            <a href="#!/Dashboard"><img src="images/penbench-logo.png" alt="logo" style="height:70px; width:180px; margin-top:10px; float:left;" /></a>
+            <div style="float:right; margin-top:5px;" ">
+                <!--<img src="Images/coatofarm.jpg" alt="coatofarm" height="70px" width="70px" style="border-radius:50%; float:right; margin-right:10px;" />-->
+                <img src="Images/njc_logo.jpg" alt="coatofarm" height="70px" width="70px" style="border-radius:50%; float:right;" />
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="background-color:#5EC158;">
+        <div class="container-fluid" style="margin-top:1px; margin-bottom:2px; padding-bottom:2px; padding-top:2px; padding-left:50px !important; padding-right:50px !important">
+            <div class="col-sm-10">
+                <div class="dropdown">
+                    <div ng-controller="InitController" ng-bind-html="to_trusted()"></div>
+                </div>
+            </div>
+            <div class="col-sm-2" style="text-align:right;" ng-controller="HomeController">
+                <div class="btn-group nav-right" style="float:right !important;" uib-dropdown dropdown-append-to-body>
+                    <button id="btn-append-to-body" type="button" class="btn btn-sm btn-warning" uib-dropdown-toggle>
+                        <i class="fa fa-user"></i> {{uid}} <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+                        <li><a href="#!/Myprofile"><i class="fa fa-cogs"></i> Profile</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#!/Signout"><i class="fa fa-power-off"></i> Sign Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--</div>-->
+
+    <div ng-controller="InitController" class="section container" style="min-height:750px !important; position: relative !important; background-color:#fff; border:1px solid #d7f9d4; margin-bottom:20px; padding:0 20px 5px 0;">
+        <div ng-view style="width:100% !important; position:absolute;"></div>
+
+        <!--<div ng-show="loading" style="position: absolute !important; z-index: 10 !important; text-align:center; background-color:#fff; width:100%; height:100%; opacity:0.6;">
+            <div id="floatingCirclesG">
+                <div class="f_circleG" id="frotateG_01"></div>
+                <div class="f_circleG" id="frotateG_02"></div>
+                <div class="f_circleG" id="frotateG_03"></div>
+                <div class="f_circleG" id="frotateG_04"></div>
+                <div class="f_circleG" id="frotateG_05"></div>
+                <div class="f_circleG" id="frotateG_06"></div>
+                <div class="f_circleG" id="frotateG_07"></div>
+                <div class="f_circleG" id="frotateG_08"></div>
+            </div>
+        </div>-->
+    </div>
+
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-image:url('../../Images/pen-title-bg.jpg'); background-repeat:no-repeat; background-size:100%; border-radius:5px 5px 0 0;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-window-close"></i></span></button>
+                    <h4 class="modal-title" id="divheader1">Alerts</h4>
+                </div>
+                <div class="form-group col-sm-9" ng-controller="InitController">
+                    <table>
+                        <tr><th>&nbsp;</th></tr>
+                        <tr ng-repeat="val in alertlist">
+                            <td>{{val}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <hr style="width:100%; border:1px solid #fff" />
+                <div class="modal-footer" style="background-image:url('../../Images/pen-title-bg.jpg'); background-repeat:no-repeat; background-size:100%; border-radius:0 0 5px 5px;">
+                    <button type="submit" class="btn btn-success close" id="btncancel" data-dismiss="modal" aria-label="Close"><i class="fa fa-window-close"></i>&nbsp;Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-image:url('../../Images/pen-title-bg.jpg'); background-repeat:no-repeat; background-size:100%; border-radius:5px 5px 0 0;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-window-close"></i></span></button>
+                    <h4 class="modal-title" id="noticeheader">Notifications</h4>
+                </div>
+                <div class="form-group col-sm-9" ng-controller="InitController">
+                    <table>
+                        <tr><th>&nbsp;</th></tr>
+                        <tr ng-repeat="val in notificationlist">
+                            <td>{{val}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <hr style="width:100%; border:1px solid #fff" />
+                <div class="modal-footer" style="background-image:url('../../Images/pen-title-bg.jpg'); background-repeat:no-repeat; background-size:100%; border-radius:0 0 5px 5px;">
+                    <button type="submit" class="btn btn-success close" id="btnclosenotice" data-dismiss="modal" aria-label="Close"><i class="fa fa-window-close"></i>&nbsp;Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app/sharedservice.js" type="text/javascript"></script>
+    <script src="app/pensionapp.js" type="text/javascript"></script>
+    <script src="app/Payrefundscontroller.js" type="text/javascript"></script>
+    <script src="app/Paymentstrackcontroller.js" type="text/javascript"></script>
+    <script src="app/Pensioninfocontroller.js" type="text/javascript"></script>
+    <script src="app/Scheduleimportcontroller.js" type="text/javascript"></script>
+    <script src="app/Scheduleprocessedcontroller.js" type="text/javascript"></script>
+    <script src="app/Schedulesincontroller.js" type="text/javascript"></script>
+    <script src="app/Staffappointmentcontroller.js" type="text/javascript"></script>
+    <script src="app/Staffappointmenthistorycontroller.js" type="text/javascript"></script>
+    <script src="app/Staffbasiccontroller.js" type="text/javascript"></script>
+    <script src="app/Staffbiometriccontroller.js" type="text/javascript"></script>
+    <script src="app/Staffcontactcontroller.js" type="text/javascript"></script>
+    <script src="app/Staffnokcontroller.js" type="text/javascript"></script>
+    <script src="app/Appointmentdetailscontroller.js" type="text/javascript"></script>
+    <script src="app/Appointmenthistorycontroller.js" type="text/javascript"></script>
+    <script src="app/Bankdetailscontroller.js" type="text/javascript"></script>
+    <script src="app/Biometriccontroller.js" type="text/javascript"></script>
+    <script src="app/Contactscontroller.js" type="text/javascript"></script>
+    <script src="app/Deductionscontroller.js" type="text/javascript"></script>
+    <script src="app/Nokcontroller.js" type="text/javascript"></script>
+    <script src="app/Payitemcontroller.js" type="text/javascript"></script>
+    <script src="app/Pensionerbasiccontroller.js" type="text/javascript"></script>
+    <script src="app/Salaryscalecontroller.js" type="text/javascript"></script>
+    <script src="app/Salarystructurecontroller.js" type="text/javascript"></script>
+    <script src="app/Bankdetailmstcontroller.js" type="text/javascript"></script>
+    <script src="app/Biometricmstcontroller.js" type="text/javascript"></script>
+    <script src="app/Complaintsmstcontroller.js" type="text/javascript"></script>
+    <script src="app/Complaintstempcontroller.js" type="text/javascript"></script>
+    <script src="app/Contactmstcontroller.js" type="text/javascript"></script>
+    <script src="app/Enrolleeappthistorycontroller.js" type="text/javascript"></script>
+    <script src="app/Enrollmentcontroller.js" type="text/javascript"></script>
+    <script src="app/Nokmstcontroller.js" type="text/javascript"></script>
+    <script src="app/Paymentsdefcontroller.js" type="text/javascript"></script>
+    <script src="app/Scheduledefcontroller.js" type="text/javascript"></script>
+    <script src="app/Verificationmstcontroller.js" type="text/javascript"></script>
+    <script src="app/Verificationtempcontroller.js" type="text/javascript"></script>
+    <script src="app/Exceptionslogscontroller.js" type="text/javascript"></script>
+    <script src="app/Transactionscontroller.js" type="text/javascript"></script>
+    <script src="app/Gradelevelcontroller.js" type="text/javascript"></script>
+    <script src="app/Jodesignationcontroller.js" type="text/javascript"></script>
+    <script src="app/Payreviewconfigcontroller.js" type="text/javascript"></script>
+    <script src="app/Pengratcomputecontroller.js" type="text/javascript"></script>
+    <script src="app/Pensionerpayconfigcontroller.js" type="text/javascript"></script>
+    <script src="app/Pensionerpayitemcontroller.js" type="text/javascript"></script>
+    <script src="app/Pensionerpaytypecontroller.js" type="text/javascript"></script>
+    <script src="app/Retirementpolicycontroller.js" type="text/javascript"></script>
+    <script src="app/Stepcontroller.js" type="text/javascript"></script>
+    <script src="app/Formcontroller.js" type="text/javascript"></script>
+    <script src="app/Groupformcontroller.js" type="text/javascript"></script>
+    <script src="app/Groupformcontrolcontroller.js" type="text/javascript"></script>
+    <script src="app/Groupprocedurecontroller.js" type="text/javascript"></script>
+    <script src="app/Logincontroller.js" type="text/javascript"></script>
+    <script src="app/Procedurescontroller.js" type="text/javascript"></script>
+    <script src="app/Usergroupcontroller.js" type="text/javascript"></script>
+    <script src="app/Bankscontroller.js" type="text/javascript"></script>
+    <script src="app/Countrycontroller.js" type="text/javascript"></script>
+    <script src="app/Courtdivisioncontroller.js" type="text/javascript"></script>
+    <script src="app/Courtnamecontroller.js" type="text/javascript"></script>
+    <script src="app/Designationcontroller.js" type="text/javascript"></script>
+    <script src="app/Lgacontroller.js" type="text/javascript"></script>
+    <script src="app/Maritalstatuscontroller.js" type="text/javascript"></script>
+    <script src="app/Pfacontroller.js" type="text/javascript"></script>
+    <script src="app/Relationshipcontroller.js" type="text/javascript"></script>
+    <script src="app/Sexcontroller.js" type="text/javascript"></script>
+    <script src="app/Statecontroller.js" type="text/javascript"></script>
+    <script src="app/Titlecontroller.js" type="text/javascript"></script>
+    <script src="app/HomeController.js" type="text/javascript"></script>
+    <script src="app/Documentscontroller.js" type="text/javascript"></script>
+    <script src="app/Signout.js" type="text/javascript"></script>
+    <script src="app/Errorlogscontroller.js" type="text/javascript"></script>
+    <script src="app/Dashboardcontroller.js" type="text/javascript"></script>
+    <script src="app/Reportsetupcontroller.js" type="text/javascript"></script>
+    <script src="app/Reportcontroller.js" type="text/javascript"></script>
+    <script src="app/Myprofilecontroller.js" type="text/javascript"></script>
+    <script src="app/Registrationtempcontroller.js" type="text/javascript"></script>
+
+    <script src="app/ModuleController.js" type="text/javascript"></script>
+    <script src="app/BasedataController.js" type="text/javascript"></script>
+    <script src="app/AppointmentController.js" type="text/javascript"></script>
+    <script src="app/EnrolmentapprovalController.js" type="text/javascript"></script>
+    <script src="app/BiometriconlineController.js" type="text/javascript"></script>
+    <script src="app/ComplaintsController.js" type="text/javascript"></script>
+    <script src="app/ContactController.js" type="text/javascript"></script>
+    <script src="app/DocumentController.js" type="text/javascript"></script>
+    <script src="app/FamilyController.js" type="text/javascript"></script>
+    <script src="app/InquiriesController.js" type="text/javascript"></script>
+    <script src="app/NokonlineController.js" type="text/javascript"></script>
+    <script src="app/PromotionController.js" type="text/javascript"></script>
+    <script src="app/RsaController.js" type="text/javascript"></script>
+    <script src="app/VerificationController.js" type="text/javascript"></script>
+    <script src="app/Complaintscontroller.js" type="text/javascript"></script>
+    <script src="app/Processedenrolleecontroller.js" type="text/javascript"></script>
+
+    <div style="margin-bottom:0px; background-color:green !important">
+        <div>
+            <p style="float:right; font-size:0.8em; color:#fff">
+                &#169; 2020 Pensions Dept. NJC | PenBench&reg; All Rights Reserved
+            </p>
+        </div>
+    </div>
+    <div class="container-fluid" style="margin-bottom:0px; background-color:#5EC158">
+
+    </div>
+
+    <script src="Scripts/js/jquery.min.js" type="text/javascript"></script>
+    <script src="Scripts/js/jquery-ui.js" type="text/javascript"></script>
+    <script src="Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <script src="Scripts/bootstrap-datepicker.js" type="text/javascript"></script>
+
+
+</body>
+</html>
